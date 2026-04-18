@@ -31,12 +31,9 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             viewCurrentScriptToolStripMenuItem = new ToolStripMenuItem();
-            optionsToolStripMenuItem = new ToolStripMenuItem();
-            configureToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
-            howtoToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
-            listBox1 = new ListBox();
+            listView1 = new ListView();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -53,15 +50,16 @@
             label7 = new Label();
             textBox5 = new TextBox();
             button2 = new Button();
+            progressBar1 = new ProgressBar();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, optionsToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(479, 24);
+            menuStrip1.Size = new Size(681, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -75,53 +73,44 @@
             // viewCurrentScriptToolStripMenuItem
             // 
             viewCurrentScriptToolStripMenuItem.Name = "viewCurrentScriptToolStripMenuItem";
-            viewCurrentScriptToolStripMenuItem.Size = new Size(175, 22);
+            viewCurrentScriptToolStripMenuItem.Size = new Size(180, 22);
             viewCurrentScriptToolStripMenuItem.Text = "View Current Script";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { configureToolStripMenuItem });
-            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(61, 20);
-            optionsToolStripMenuItem.Text = "Options";
-            // 
-            // configureToolStripMenuItem
-            // 
-            configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-            configureToolStripMenuItem.Size = new Size(127, 22);
-            configureToolStripMenuItem.Text = "Configure";
+            viewCurrentScriptToolStripMenuItem.Click += viewCurrentScriptToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { howtoToolStripMenuItem, aboutToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             helpToolStripMenuItem.Size = new Size(44, 20);
             helpToolStripMenuItem.Text = "Help";
             // 
-            // howtoToolStripMenuItem
-            // 
-            howtoToolStripMenuItem.Name = "howtoToolStripMenuItem";
-            howtoToolStripMenuItem.Size = new Size(115, 22);
-            howtoToolStripMenuItem.Text = "How-to";
-            // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(115, 22);
+            aboutToolStripMenuItem.Size = new Size(180, 22);
             aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
-            // listBox1
+            // listView1
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(245, 94);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(196, 139);
-            listBox1.TabIndex = 1;
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
+            listView1.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            listView1.Location = new Point(241, 70);
+            listView1.Name = "listView1";
+            listView1.ShowItemToolTips = true;
+            listView1.Size = new Size(435, 109);
+            listView1.Sorting = SortOrder.Ascending;
+            listView1.TabIndex = 1;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            listView1.DoubleClick += listView1_DoubleClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(245, 70);
+            label1.Location = new Point(245, 49);
             label1.Name = "label1";
             label1.Size = new Size(56, 15);
             label1.TabIndex = 2;
@@ -149,7 +138,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(11, 209);
+            label4.Location = new Point(11, 189);
             label4.Name = "label4";
             label4.Size = new Size(88, 15);
             label4.TabIndex = 5;
@@ -178,7 +167,7 @@
             textBox1.Location = new Point(112, 41);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 8;
+            textBox1.TabIndex = 1;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
@@ -186,7 +175,7 @@
             textBox2.Location = new Point(112, 100);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 9;
+            textBox2.TabIndex = 3;
             textBox2.Text = "admin";
             textBox2.TextChanged += textBox2_TextChanged;
             // 
@@ -195,7 +184,7 @@
             textBox3.Location = new Point(112, 129);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 10;
+            textBox3.TabIndex = 4;
             textBox3.Text = "password";
             textBox3.TextChanged += textBox3_TextChanged;
             // 
@@ -204,33 +193,36 @@
             textBox4.Location = new Point(112, 158);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 11;
+            textBox4.TabIndex = 5;
+            textBox4.Text = "240";
             // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(105, 205);
+            radioButton1.Location = new Point(105, 189);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(42, 19);
-            radioButton1.TabIndex = 12;
-            radioButton1.TabStop = true;
+            radioButton1.TabIndex = 6;
             radioButton1.Text = "Yes";
             radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(158, 205);
+            radioButton2.Checked = true;
+            radioButton2.Location = new Point(153, 189);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(41, 19);
-            radioButton2.TabIndex = 13;
+            radioButton2.TabIndex = 7;
             radioButton2.TabStop = true;
             radioButton2.Text = "No";
             radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 
             // button1
             // 
-            button1.Location = new Point(273, 239);
+            button1.Location = new Point(535, 185);
             button1.Name = "button1";
             button1.Size = new Size(141, 23);
             button1.TabIndex = 14;
@@ -252,23 +244,31 @@
             textBox5.Location = new Point(112, 70);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 16;
+            textBox5.TabIndex = 2;
             textBox5.Text = "80";
             // 
             // button2
             // 
-            button2.Location = new Point(336, 65);
+            button2.Location = new Point(369, 41);
             button2.Name = "button2";
             button2.Size = new Size(105, 23);
             button2.TabIndex = 17;
             button2.Text = "Scan network";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(480, 41);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(196, 23);
+            progressBar1.TabIndex = 18;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(479, 274);
+            ClientSize = new Size(681, 214);
             Controls.Add(button2);
             Controls.Add(textBox5);
             Controls.Add(label7);
@@ -285,7 +285,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(listBox1);
+            Controls.Add(listView1);
+            Controls.Add(progressBar1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
@@ -301,12 +302,9 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem viewCurrentScriptToolStripMenuItem;
-        private ToolStripMenuItem optionsToolStripMenuItem;
-        private ToolStripMenuItem configureToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
-        private ToolStripMenuItem howtoToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
-        private ListBox listBox1;
+        private ListView listView1;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -323,5 +321,6 @@
         private Label label7;
         private TextBox textBox5;
         private Button button2;
+        private ProgressBar progressBar1;
     }
 }
