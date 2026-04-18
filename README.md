@@ -15,12 +15,12 @@ script!
 <P>
 The front-end also includes a basic IP scanning interface (though not implemented yet.) The idea is to help with canera IP identifiation obviously, making the process even
 easier for the average user, but they will need to know what their local domain range is.
-
+<P>
 This is a work in progress - drop me a line at rmorrow@breezelineohio.net if you have any feature suggestions. 
-
+<P>
 To-Do:
-
-Fix automatic script execution (script builds and executes manually fine, but subroutine on executing the script automatically isn't working) (DONE) <P>
-Clean up the code (Good lord am I rusty.) <P>
-Implement IP scanning, returning IP addresses and machine names, including open ports (DONE) <P>
-Implement auto-run on startup option <P>
+<P>
+Fix automatic script execution (script builds and executes manually fine, but subroutine on executing the script automatically isn't working) (DONE) <BR>
+Clean up the code (Good lord am I rusty.) <BR>
+Implement IP scanning, returning IP addresses and machine names, including open ports (DONE) <BR>
+Implement auto-run on startup option <BR>
